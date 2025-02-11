@@ -1,0 +1,17 @@
+{
+    "name": "ronald/github.com-ronald-eduardoplog-my.git",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ronald\\GithubComRonaldEduardoplogMyGit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gustmann",
+            "email": "ronald29eduardo@gmail.com"
+        }
+    ],
+    "require": {}
+}
