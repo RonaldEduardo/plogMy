@@ -4,7 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ronald\\GithubComRonaldEduardoplogMyGit\\": "src/"
+            "Src\\": "src/"
         }
     },
     "scripts": {
