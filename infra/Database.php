@@ -4,21 +4,36 @@ namespace Infra;
 
 use PDO;
 use PDOException;
+use Dotenv\Dotenv;
+
+require '../vendor/autoload.php';
 
 class Database
 {
-    private $host = "127.0.0.1";
-    private $port = "3306";
-    private $dbname = "teste";
-    private $user = "root";
-    private $password = "root";
+    private $host;
+    private $port;
+    private $dbname;
+    private $user;
+    private $pass;
     private $conn;
 
     public function __construct()
     {
+        // Carregar variáveis de ambiente do arquivo .env
+        $pathEnv = dirname(__DIR__, 1);
+        $dotenv = Dotenv::createImmutable($pathEnv);
+        $dotenv->load();
+
+        // Atribuir valores das variáveis de ambiente às propriedades da classe
+        $this->host = $_ENV["DB_HOST"];
+        $this->port = $_ENV["DB_PORT"];
+        $this->dbname = $_ENV["DB_NAME"];
+        $this->user = $_ENV["DB_USER"];
+        $this->pass = $_ENV["DB_PASS"];
+
         try {
             $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->dbname}";
-            $this->conn = new PDO($dsn, $this->user, $this->password);
+            $this->conn = new PDO($dsn, $this->user, $this->pass);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

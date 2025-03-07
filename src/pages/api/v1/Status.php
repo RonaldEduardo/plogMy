@@ -15,10 +15,11 @@ class Status
     {
         $Database = new Database();
         $respostaBanco = $Database->getConnection();
+        
 
         echo json_encode([
             'status' => 'OK',
-            'status banco' => $respostaBanco ? 'OK' : 'Erro',
+            'status banco' => $respostaBanco ? 'OK' : 'Erro'
         ]);
     }
 }
