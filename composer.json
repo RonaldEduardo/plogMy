@@ -4,12 +4,16 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Src\\": "src/"
+            "Src\\": "src/",
+            "Infra\\": "infra/"
         }
     },
     "scripts": {
         "lint:check": "phpcs --ignore=vendor/* .",
-        "lint:fix": "phpcbf --ignore=vendor/* ."
+        "lint:fix": "phpcbf --ignore=vendor/* .",
+        "dev": [
+            "php -S localhost:8000 -t public/"
+        ]
     },
     "authors": [
         {

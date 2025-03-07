@@ -2,6 +2,8 @@
 
 namespace Src\pages\api\v1;
 
+use Infra\Database;
+
 class Status
 {
     public function __construct()
@@ -11,8 +13,12 @@ class Status
 
     public function request()
     {
+        $Database = new Database();
+        $respostaBanco = $Database->getConnection();
+
         echo json_encode([
-            'status' => 'OK'
+            'status' => 'OK',
+            'status banco' => $respostaBanco ? 'OK' : 'Erro',
         ]);
     }
 }
